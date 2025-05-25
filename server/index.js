@@ -13,13 +13,16 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = 3001;
 
-// ✅ Configure CORS
 const corsOptions = {
-  origin: ['http://localhost:5173', 'https://your-frontend-domain.com'], // Add production URL here
+  origin: [
+    'http://localhost:5173',                     // for local development
+    'https://blockchain-95g7.vercel.app'         // ✅ your live frontend domain
+  ],
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type'],
   credentials: true,
 };
+
 
 app.use(cors(corsOptions)); // ✅ Use CORS middleware
 app.use(express.json());
@@ -135,6 +138,9 @@ app.post('/api/signin', async (req, res) => {
     console.error('Signin error:', error);
     res.status(500).json({ message: 'Server error during sign in' });
   }
+});
+app.get('/', (req, res) => {
+  res.send('✅ Blockchain backend is running successfully on Render.');
 });
 
 // ✅ Start Server
