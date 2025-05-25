@@ -82,7 +82,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSuccess }) => {
     setApiError('');
     
     try {
-      const response = await fetch('https://blockchain-3-953z.onrender.com/api/signin', {
+      const response = await fetch('https://blockchain-3-953z.onrender.com/api/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
